@@ -12,37 +12,27 @@ import {
   Tooltip,
   MenuItem
 } from '@mui/material'
-import AdbIcon from '@mui/icons-material/Adb';
+import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
 import MenuIcon from '@mui/icons-material/Menu';
 
 interface Props {}
 
 const Header: React.FC<Props> = () => {
-  /*const { isLoggedIn, account, logout } = useAuth()
-  const { setCurrentModal } = useModalStore()
-
-  const openPopover: MouseEventHandler<HTMLButtonElement> = (e) => {
-    setPopover(true)
-    setAnchorEl(e.currentTarget)
-  }
-
-  const closePopover = () => {
-    setPopover(false)
-    setAnchorEl(null)
-  }
-
-  const clickLogin = () => {
-    setCurrentModal('LOGIN')
-    closePopover()
-  }
-
-  const clickRegister = () => {
-    setCurrentModal('REGISTER')
-    closePopover()
-  }*/
-
-  const pages = ['Products', 'Pricing', 'Blog'];
-  const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+  const pages = [
+    { 
+      title: 'Treinos',
+      href: '/workouts'
+    },
+    { 
+      title: 'Nutrição',
+      href: '/nutrition'
+    }, 
+    { 
+      title: 'Clientes',
+      href: '/clients'
+    }, 
+  ];
+  const settings = ['Perfil', 'Definições', 'Sair'];
 
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
@@ -68,27 +58,30 @@ const Header: React.FC<Props> = () => {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          <FitnessCenterIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           
           <Typography
             variant="h6"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
+            href="/"
             sx={{
-              mr: 2,
+              mr: 10,
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
               color: 'inherit',
               textDecoration: 'none',
+              align: 'left',
+              
             }}
+            
           >
             FitEasy
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }}}>
 
             <IconButton
               size="large"
@@ -115,24 +108,28 @@ const Header: React.FC<Props> = () => {
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
-              sx={{ display: { xs: 'block', md: 'none' } }}
+              sx={{ display: { xs: 'block', md: 'none' }}}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography sx={{ textAlign: 'center' }}>{page}</Typography>
+                <MenuItem key={page.title} onClick={handleCloseNavMenu}>
+                  <Typography 
+                    sx={{ textAlign: 'center' }}
+                  >
+                    {page.title}
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>
 
           </Box>
           
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          <FitnessCenterIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
 
           <Typography
             variant="h5"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
+            href="#home"
             sx={{
               mr: 2,
               display: { xs: 'flex', md: 'none' },
@@ -150,11 +147,12 @@ const Header: React.FC<Props> = () => {
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
-                key={page}
+                key={page.title}
+                href={page.href}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
-                {page}
+                {page.title}
               </Button>
             ))}
           </Box>
@@ -163,7 +161,7 @@ const Header: React.FC<Props> = () => {
 
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt="Diogo Lobo" src="/static/images/avatar/2.jpg" />
               </IconButton>
             </Tooltip>
 
@@ -195,39 +193,6 @@ const Header: React.FC<Props> = () => {
         </Toolbar>
       </Container>
     </AppBar>
-
-
-
-    // <AppBar className='header' position='static'>
-    //   <h1>Fit Easy</h1>
-
-    //   <IconButton onClick={openPopover}>
-    //     <OnlineIndicator online={isLoggedIn}>
-    //       <Avatar src={account?.username || ''} alt={account?.username || 'Guest'} />
-    //     </OnlineIndicator>
-    //   </IconButton>
-
-    //   <Popover
-    //     anchorEl={anchorEl}
-    //     open={popover}
-    //     onClose={closePopover}
-    //     anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-    //     transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-    //   >
-    //     <List style={{ minWidth: '100px' }}>
-    //       <ListSubheader style={{ textAlign: 'center' }}>Hello, {account?.username || 'Guest'}</ListSubheader>
-
-    //       {isLoggedIn ? (
-    //         <ListItemButton onClick={logout}>Logout</ListItemButton>
-    //       ) : (
-    //         <Fragment>
-    //           <ListItemButton onClick={clickLogin}>Login</ListItemButton>
-    //           <ListItemButton onClick={clickRegister}>Register</ListItemButton>
-    //         </Fragment>
-    //       )}
-    //     </List>
-    //   </Popover>
-    // </AppBar>
   )
 }
 
