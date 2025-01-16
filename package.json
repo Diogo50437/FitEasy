@@ -12,5 +12,8 @@
     "url": "https://github.com/BenElferink/mern-template/issues",
     "email": "ben.elferink@icloud.com"
   },
-  "scripts": {}
+  "scripts": {},
+  "dependencies": {
+    "mongodb": "^6.12.0"
+  }
 }
