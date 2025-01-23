@@ -1,0 +1,19 @@
+.WorkoutContainer {
+    display: grid; 
+    grid-template-columns: 100%; 
+    grid-template-rows: 10% 90%; 
+    gap: 20px 0px;
+    grid-template-areas: 
+      "SubHeader"
+      "BodyArea"; 
+    grid-area: Body;
+    text-align: center;
+}
+
+.SubHeader { 
+    grid-area: SubHeader;
+}
+
+.BodyArea { 
+    grid-area: BodyArea;
+}

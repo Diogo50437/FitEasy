@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { useAuth } from 'contexts/AuthContext'
 import logo from 'assets/react.svg'
-import 'styles/ReactWelcome.css'
+import 'styles/Home.css'
 
 const ReactWelcome = () => {
     return (

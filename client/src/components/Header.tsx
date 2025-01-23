@@ -18,21 +18,22 @@ import MenuIcon from '@mui/icons-material/Menu';
 interface Props {}
 
 const Header: React.FC<Props> = () => {
+  
   const pages = [
     { 
-      title: 'Treinos',
+      title: 'Workouts',
       href: '/workouts'
     },
     { 
-      title: 'Nutrição',
+      title: 'Nutrition',
       href: '/nutrition'
     }, 
     { 
-      title: 'Clientes',
+      title: 'Clients',
       href: '/clients'
     }, 
   ];
-  const settings = ['Perfil', 'Definições', 'Sair'];
+  const settings = ['Profile', 'Settings', 'Logout'];
 
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
@@ -55,8 +56,8 @@ const Header: React.FC<Props> = () => {
 
   return (
     <AppBar position="static">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
+      <Container maxWidth={false}>
+        <Toolbar sx={{width: "100%"}}disableGutters>
           
           <FitnessCenterIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           
